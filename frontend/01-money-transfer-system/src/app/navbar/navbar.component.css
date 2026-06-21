@@ -1,0 +1,81 @@
+.notch-navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.brand:hover {
+  color: #4da6ff;
+}
+
+.nav-datetime {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.nav-datetime .dot {
+  opacity: 0.5;
+}
+
+
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 40px;
+  padding: 14px 32px;
+
+  min-width: 800px;
+
+  background: rgba(10, 25, 47, 0.9);
+  backdrop-filter: blur(12px);
+
+  border-radius: 50px;
+}
+
+
+
+.nav-links a,
+.nav-links button {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+  color: #4da6ff;
+  transform: translateY(-2px);
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+

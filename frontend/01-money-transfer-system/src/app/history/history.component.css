@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.history-container {
+  min-height: 100vh;
+  padding: 120px 80px 40px 80px;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+      135deg,
+      #0a192f,
+      #112240
+  );
+
+  color: white;
+}
+
+
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.history-header h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.user-name {
+  font-size: 20px;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.history-table thead {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.history-table th {
+  text-align: left;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.history-table td {
+  padding: 16px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.history-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.history-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.history-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+
+.credit {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.debit {
+  color: #f44336;
+  font-weight: 600;
+}
+
+.credit-amount {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.debit-amount {
+  color: #f44336;
+  font-weight: 600;
+}
+
+
+.pagination-controls {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.pagination-controls button {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+
+.no-records {
+  margin-top: 40px;
+  text-align: center;
+  opacity: 0.7;
+  font-size: 16px;
+}

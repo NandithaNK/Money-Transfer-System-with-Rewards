@@ -1,0 +1,98 @@
+<div class="history-container">
+
+  <div class="history-header">
+    <div class="header-left">
+      <p class="user-name">
+        Hey {{ userName | titlecase }}, review your recent account activity and transaction details.
+      </p>
+      <h2>Transaction History</h2>
+    </div>
+  </div>
+
+
+  <div *ngIf="transferHistory.length > 0; else noRecords">
+
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>To / From</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let transfer of transferHistory">
+
+          <td>
+            {{ transfer.timestamp | date:'medium' }}
+          </td>
+
+          <td>
+            <span
+              *ngIf="transfer.fromAccountId === currentAccountId"
+              class="debit">
+              Debit
+            </span>
+
+            <span
+              *ngIf="transfer.toAccountId === currentAccountId"
+              class="credit">
+              Credit
+            </span>
+          </td>
+
+          <td
+            [ngClass]="{
+              'debit-amount': transfer.fromAccountId === currentAccountId,
+              'credit-amount': transfer.toAccountId === currentAccountId
+            }">
+
+            {{ transfer.transferAmount | currency }}
+
+          </td>
+
+          <td>
+            <span *ngIf="transfer.fromAccountId === currentAccountId">
+              To: {{ transfer.toAccountId + 600100100 }}
+            </span>
+
+            <span *ngIf="transfer.toAccountId === currentAccountId">
+              From: {{ transfer.fromAccountId + 600100100 }}
+            </span>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination-controls">
+
+      <button
+        (click)="goToPage(currentPage - 1)"
+        [disabled]="currentPage === 0">
+        Previous
+      </button>
+
+      <div class="page-info">
+        Page {{ currentPage + 1 }} of {{ totalPages }}
+      </div>
+
+      <button
+        (click)="goToPage(currentPage + 1)"
+        [disabled]="currentPage + 1 >= totalPages">
+        Next
+      </button>
+
+    </div>
+
+  </div>
+
+  <ng-template #noRecords>
+    <div class="no-records">
+      No transaction history available.
+    </div>
+  </ng-template>
+
+</div>

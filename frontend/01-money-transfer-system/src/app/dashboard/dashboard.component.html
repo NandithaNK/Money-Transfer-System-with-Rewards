@@ -1,0 +1,61 @@
+<link rel="stylesheet" class="image"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<div class="dashboard">
+
+  <div class="dashboard-container">
+
+    <div class="dashboard-left">
+
+      <div class="welcome-section">
+        <h2 class="heading-font">
+          {{ greeting }},
+          <strong>{{ userName | titlecase }}</strong>
+        </h2>
+        <p class="muted">
+          Here’s a snapshot of your account overview.
+        </p>
+      </div>
+
+      <div class="account-card">
+
+        <div class="balance-section">
+          <h5>Account Balance</h5>
+          <h1>{{ accountBalance | currency }}</h1>
+        </div>
+
+        <div class="points-section">
+          <h5><i class="fa-solid fa-star"></i> Total Reward Points</h5>
+          <h2>{{ totalPoints }}</h2>
+          <a routerLink="/rewards" class="view-rewards-link">View Rewards History</a>
+        </div>
+
+        <div class="account-info">
+          <span><i class="fa-solid fa-id-card"></i> Account ID:</span>
+          <strong>{{ elongatedId }}</strong>
+        </div>
+
+      </div>
+
+      <div class="extra-info">
+
+        <div class="wealth-tip">
+          <i class="fa-solid fa-lightbulb"></i>
+          <p>{{ wealthTip }}</p>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="dashboard-right">
+      <img 
+        src="https://images.pexels.com/photos/41183/background-british-budget-business-41183.jpeg"
+        alt="Finance Illustration"
+      />
+    </div>
+
+  </div>
+
+</div>

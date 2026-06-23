@@ -15,4 +15,12 @@ public interface IRewardService {
 
     //to get all rewards for a specific account
     List<Reward> getRewardsByAccountId(Long accountId);
+
+    //redeeming all unredeemed points as cashback
+    Double redeemRewards(Long accountId);
+
+    //getting total unredeemed points
+    Integer getTotalUnredeemedPoints(Long accountId);
+
+
 }

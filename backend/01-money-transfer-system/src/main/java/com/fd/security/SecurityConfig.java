@@ -56,7 +56,8 @@ public class SecurityConfig {
                         		"/api/v1/account/*/transactions",
                         		"/api/v1/account/transactions/*",
                         		"/api/v1/account/1",
-                        		"/api/v1/transfers/**")
+                        		"/api/v1/transfers/**",
+                                "api/v1/rewards/**")
                         .hasAnyRole("USER","ADMIN")
                         .anyRequest().authenticated()
                 )

@@ -10,13 +10,15 @@ public class RewardResponse {
     private Long accountId;
     private Integer pointsEarned;
     private LocalDateTime createdAt;
+    private Boolean redeemed;
 
-    public RewardResponse(Long rewardId, Long transactionId, Long accountId, Integer pointsEarned, LocalDateTime createdAt){
+    public RewardResponse(Long rewardId, Long transactionId, Long accountId, Integer pointsEarned, LocalDateTime createdAt, Boolean redeemed){
         this.rewardId = rewardId;
         this.transactionId = transactionId;
         this.accountId = accountId;
         this.pointsEarned = pointsEarned;
         this.createdAt = createdAt;
+        this.redeemed = redeemed;
     }
 
     public Long getRewardId() {
@@ -39,6 +41,12 @@ public class RewardResponse {
         return createdAt;
     }
 
+    public Boolean getRedeemed(){
+        return redeemed;
+    }
+
+
+
     public static RewardResponse fromEntityToDTO(Reward reward){
         if (reward == null){
             return null;
@@ -46,6 +54,6 @@ public class RewardResponse {
 
         return new RewardResponse( reward.getRewardId(),
                     reward.getTransactionId(), reward.getAccountId(), 
-                    reward.getPointsEarned(), reward.getCreatedAt());
+                    reward.getPointsEarned(), reward.getCreatedAt(), reward.getRedeemed());
     }
 }

@@ -1,34 +1,46 @@
-<div class="rewards-page">
-  <div class="rewards-container">
-    <h2>Your Rewards</h2>
-
-    <div class="total-points">
-      <h3>Total Points Earned: {{ totalPoints }}</h3>
+<div class="rewards-container">
+  <div class="rewards-header">
+    <div>
+      <p class="user-name">Hey {{ userName }}, here are your rewards!</p>
+      <h2>Rewards</h2>
     </div>
+  </div>
 
-    <div *ngIf="rewards.length === 0" class="no-rewards">
-      <p>No rewards yet! Make a transaction over $100 to earn points!</p>
+  <!-- Total Points & Redeem Button Card -->
+  <div class="summary-card">
+    <div class="summary-item">
+      <span class="label">Total Points Earned:</span>
+      <span class="value">{{ totalPoints }}</span>
     </div>
+    <div class="summary-item">
+      <span class="label">Available to Redeem:</span>
+      <span class="value highlight">{{ totalUnredeemedPoints }}</span>
+    </div>
+    <button 
+      class="redeem-btn btn-navy" 
+      [disabled]="totalUnredeemedPoints === 0"
+      (click)="redeemRewards()"
+    >
+      Redeem as Cashback (1 Point = 1 Currency Unit)
+    </button>
+    <!-- Message for success/error -->
+    <div *ngIf="message" class="message">{{ message }}</div>
+  </div>
 
-    <div *ngIf="rewards.length > 0" class="table-wrapper">
-      <table class="rewards-table">
-        <thead>
-          <tr>
-            <th>Reward ID</th>
-            <th>Transaction ID</th>
-            <th>Points Earned</th>
-            <th>Date Earned</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let reward of rewards">
-            <td>{{ reward.rewardId + 600100100 }}</td>
-            <td>{{ reward.transactionId + 600100100 }}</td>
-            <td>{{ reward.pointsEarned }}</td>
-            <td>{{ reward.createdAt | date: 'medium' }}</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- Rewards List -->
+  <div class="rewards-list">
+    <h3>Rewards History</h3>
+    <div class="reward-item" *ngFor="let reward of rewards">
+      <div class="reward-info">
+        <span class="points">+{{ reward.pointsEarned }} Points</span>
+        <span class="date">{{ reward.createdAt | date: 'medium' }}</span>
+      </div>
+      <span class="status" [class.redeemed]="reward.redeemed">
+        {{ reward.redeemed ? 'Redeemed' : 'Available' }}
+      </span>
+    </div>
+    <div *ngIf="rewards.length === 0" class="empty-message">
+      No rewards yet! Make a transaction over 100 to earn points.
     </div>
   </div>
 </div>

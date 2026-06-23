@@ -35,7 +35,10 @@ public class Reward {
 	@Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 	
-	public Reward() {
+    @Column(name = "redeemed", nullable = false)
+    private Boolean redeemed = false;
+	
+    public Reward() {
 		super();
 		
 	}
@@ -46,6 +49,7 @@ public class Reward {
         this.accountId = accountId;
         this.pointsEarned = pointsEarned;
         this.createdAt = LocalDateTime.now();
+        this.redeemed = false;
     }
 
     public Long getRewardId() {
@@ -86,6 +90,14 @@ public class Reward {
 
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt = createdAt;
+    }
+
+    public Boolean getRedeemed(){
+        return redeemed;
+    }
+
+    public void setRedeemed(Boolean redeemed){
+        this.redeemed = redeemed;
     }
     
 	
